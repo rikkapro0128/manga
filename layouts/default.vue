@@ -1,9 +1,11 @@
 <template>
   <div>
     <Header/>
-    <div class='wraper'>
-      <Nuxt />
-    </div>
+    <section>
+      <div class='wraper'>
+        <Nuxt />
+      </div>
+    </section>
     <Footer/>
   </div>
 </template>
@@ -22,11 +24,15 @@ export  default  {
 <style lang='scss' scoped>
 div {
   font-family: Overpass, sans-serif;
-  .wraper {
+  section {
     width: 100%;
-    max-width: 1050px;
-    padding: 2rem 0;
-    margin: 0 auto;
+    background-color: $default-bg-color-section;
+    .wraper {
+      width: 100%;
+      max-width: 1050px;
+      padding: 2rem 0;
+      margin: 0 auto;
+    }
   }
 }
 </style>
