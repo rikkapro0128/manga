@@ -13,20 +13,26 @@
         <div class="filter-wrap__mini-item">
           <span class="filter-wrap__mini-item--title">thể loại</span>
           <Select
-            :options="{ placeholder: `từ khoá`, list: typeManga, muti: true }"
+            :options="{ placeholder: `từ khoá`, list: typeManga, muti: true, disableInput: false }"
           />
         </div>
         <div class="filter-wrap__mini-item">
           <span class="filter-wrap__mini-item--title">format</span>
-          <Select />
+          <Select
+            :options="{ list: [`anime`, `manga`, `light novel`], muti: true, disableInput: true, defaultSelect: [1, 2], disableSelect: true }"
+          />
         </div>
         <div class="filter-wrap__mini-item">
           <span class="filter-wrap__mini-item--title">tình trạng</span>
-          <Select />
+          <Select
+            :options="{ list: [`đang cập nhật`, `bị hoãn`], muti: true, disableInput: true, defaultSelect: [0] }"
+          />
         </div>
         <div class="filter-wrap__mini-item">
           <span class="filter-wrap__mini-item--title">đất nước</span>
-          <Select />
+          <Select
+            :options="{ list: [`trung quốc`, `việt nam`, `nhật bản`, `hàn quốc`], muti: true, disableInput: true, defaultSelect: [2, 3] }"
+          />
         </div>
       </div>
       <div class="filter-wrap__extra"></div>

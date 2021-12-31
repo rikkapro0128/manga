@@ -1,10 +1,11 @@
 <template>
-  <div v-click-outside="hide" class="select-wrap" @click="toggle">
+  <div v-click-outside="hide" class="select-wrap" :class="{ 'select-wrap--disabled': $props.options.disableSelect }" @click="toggle">
     <input
       v-if="!optionsSelected.length"
       v-model="look"
       :placeholder="$props.options.placeholder"
       type="text"
+      :disabled='$props.options.disableInput'
     />
     <div v-else class="select-wrap__tags">
       <span class="select-wrap__tags--name">{{ optionsSelected[0] }}</span>
@@ -48,7 +49,7 @@
         class=""
       ></path>
     </svg>
-    <div v-if="opened" class="select-wrap__options">
+    <div v-if="opened && !$props.options.disableSelect" class="select-wrap__options">
       <p
         v-for="(option, index) in optionsViewLoad"
         :key="index"
@@ -98,9 +99,11 @@ export default {
       default: () => {
         return {
           placeholder: "",
-          defaultValue: [],
+          defaultSelect: [],
           list: [],
           muti: false,
+          disableInput: true,
+          disableSelect: false,
         }
       },
     },
@@ -108,7 +111,8 @@ export default {
   data() {
     return {
       optionsViewLoad: this.$props.options.list,
-      optionsSelected: [],
+      optionsSelected: this.$props.options.defaultSelect ? this.$props.options.defaultSelect.map(order => this.$props.options.list[order]) : [],
+      // this.$props.options.defaultSelect.reduce((_, order) => this.$props.options.list[order], [])
       look: "",
       opened: false,
     }
@@ -118,7 +122,9 @@ export default {
       this.parserLooking(newContent)
     },
   },
-  mounted() {},
+  mounted() {
+    console.log(this.$props.options.defaultSelect)
+  },
   methods: {
     toggle(muti = false) {
       if (muti) {
@@ -146,10 +152,12 @@ export default {
       )
     },
     resetOption() {
-      this.$data.optionsSelected = []
-      this.$data.optionsViewLoad = this.$props.options.list
-      this.$data.look = ""
-      this.toggle()
+      if(!this.$props.options.disableSelect) {
+        this.$data.optionsSelected = []
+        this.$data.optionsViewLoad = this.$props.options.list
+        this.$data.look = ""
+        this.toggle()
+      }
     },
   },
 }
@@ -170,18 +178,20 @@ export default {
   padding: 11px 16px;
   box-sizing: border-box;
   position: relative;
+  cursor: pointer;
+  &--disabled {
+    cursor: not-allowed;
+  }
   svg.fa-search {
     color: $color-gray-400;
   }
   svg.fa-chevron-down {
     color: $color-gray-400;
-    cursor: pointer;
     &:hover {
       color: $color-gray-600;
     }
   }
   svg.close {
-    cursor: pointer;
     color: $color-gray-400;
     transition: color 0.2s ease;
     &:hover {
@@ -194,6 +204,7 @@ export default {
     font-weight: 600;
     width: 100%;
     box-sizing: border-box;
+    background-color: transparent;
     &::placeholder {
       color: inherit;
       text-transform: capitalize;
@@ -213,6 +224,19 @@ export default {
     padding: 10px;
     z-index: 50;
     overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #e4e4e4;
+      border-radius: 100px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+      border: 2px solid transparent;
+      background-clip: content-box;
+      background-color: $color-blue-500;
+    }
     &--item {
       display: flex;
       border-radius: 4px;
@@ -255,9 +279,11 @@ export default {
     }
   }
   &__tags {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: $color-gray-600;
-    margin-left: -12px;
+    margin-left: -9px;
+    font-weight: 500;
+    margin-top: 2px;
     span {
       background-color: $color-background-300;
       padding: 5px 8px;
