@@ -29,9 +29,10 @@ div {
     background-color: $default-bg-color-section;
     .wraper {
       width: 100%;
-      max-width: 1050px;
-      padding: 2rem 0;
+      max-width: 1520px;
+      padding: 2rem 100px;
       margin: 0 auto;
+      box-sizing: border-box;
     }
   }
 }

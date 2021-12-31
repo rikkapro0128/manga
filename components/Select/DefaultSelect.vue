@@ -1,11 +1,16 @@
 <template>
-  <div v-click-outside="hide" class="select-wrap" :class="{ 'select-wrap--disabled': $props.options.disableSelect }" @click="toggle">
+  <div
+    v-click-outside="hide"
+    class="select-wrap"
+    :class="{ 'select-wrap--disabled': $props.options.disableSelect }"
+    @click="toggle"
+  >
     <input
       v-if="!optionsSelected.length"
       v-model="look"
       :placeholder="$props.options.placeholder"
       type="text"
-      :disabled='$props.options.disableInput'
+      :disabled="$props.options.disableInput"
     />
     <div v-else class="select-wrap__tags">
       <span class="select-wrap__tags--name">{{ optionsSelected[0] }}</span>
@@ -49,7 +54,10 @@
         class=""
       ></path>
     </svg>
-    <div v-if="opened && !$props.options.disableSelect" class="select-wrap__options">
+    <div
+      v-if="opened && !$props.options.disableSelect"
+      class="select-wrap__options"
+    >
       <p
         v-for="(option, index) in optionsViewLoad"
         :key="index"
@@ -111,8 +119,11 @@ export default {
   data() {
     return {
       optionsViewLoad: this.$props.options.list,
-      optionsSelected: this.$props.options.defaultSelect ? this.$props.options.defaultSelect.map(order => this.$props.options.list[order]) : [],
-      // this.$props.options.defaultSelect.reduce((_, order) => this.$props.options.list[order], [])
+      optionsSelected: this.$props.options.defaultSelect
+        ? this.$props.options.defaultSelect.map(
+            (order) => this.$props.options.list[order]
+          )
+        : [],
       look: "",
       opened: false,
     }
@@ -122,9 +133,7 @@ export default {
       this.parserLooking(newContent)
     },
   },
-  mounted() {
-    console.log(this.$props.options.defaultSelect)
-  },
+  mounted() {},
   methods: {
     toggle(muti = false) {
       if (muti) {
@@ -152,7 +161,7 @@ export default {
       )
     },
     resetOption() {
-      if(!this.$props.options.disableSelect) {
+      if (!this.$props.options.disableSelect) {
         this.$data.optionsSelected = []
         this.$data.optionsViewLoad = this.$props.options.list
         this.$data.look = ""
