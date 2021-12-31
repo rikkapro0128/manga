@@ -1,29 +1,32 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  target: 'static',
+  target: "static",
   // ssr: false,
   // generate: {
   //   fallback: true
   // },
   head: {
-    title: 'manga-app',
+    title: "manga-app",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { hid: "description", name: "description", content: "" },
+      { name: "format-detection", content: "telephone=no" },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', }
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap",
+      },
     ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/css/reset.min.css',
-    '@/assets/scss/global.scss',
-    '@/assets/scss/variables.scss',
+    "@/assets/css/reset.min.css",
+    "@/assets/scss/global.scss",
+    "@/assets/scss/variables.scss",
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -35,35 +38,35 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    "@nuxtjs/eslint-module",
     // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
+    "@nuxtjs/stylelint-module",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
+    "@nuxtjs/pwa",
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
-    '@nuxtjs/style-resources',
+    "@nuxt/content",
+    "@nuxtjs/style-resources",
   ],
   styleResources: {
-    scss: ['@/assets/scss/*.scss']
+    scss: ["@/assets/scss/*.scss"],
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: "/",
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en',
+      lang: "en",
     },
   },
 

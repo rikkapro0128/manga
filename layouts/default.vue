@@ -1,27 +1,27 @@
 <template>
   <div>
-    <Header/>
+    <Header />
     <section>
-      <div class='wraper'>
+      <div class="wraper">
         <Nuxt />
       </div>
     </section>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header/DefaultHeader'
-import Footer from '@/components/Footer/DefaultFooter'
-export  default  {
+import Header from "@/components/Header/DefaultHeader"
+import Footer from "@/components/Footer/DefaultFooter"
+export default {
   components: {
     Header,
     Footer,
-  }
+  },
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 div {
   font-family: Overpass, sans-serif;
   section {
