@@ -7,11 +7,21 @@
 
 <style lang="scss" scoped>
 .card-wrap {
-  animation: in-data-v-758c163c 0.3s linear;
+  animation: start 0.3s linear;
   display: grid;
   grid-template-rows: min-content auto;
   position: relative;
   width: 185px;
+  @keyframes start {
+    0% {
+      opacity:0;
+      transform:scale(.96)
+    }60% {
+       opacity:1;
+     }to {
+        transform:none;
+      }
+  }
   &__cover {
     background: rgba($color-background-300, 0.8);
     box-shadow: none;
@@ -26,29 +36,7 @@
     position: relative;
     width: 100%;
     z-index: 5;
-    &:before {
-      @keyframes card-load-primary {
-        from {
-          transform: translateX(-100%);
-        }
-        to {
-          transform: translateX(50%);
-        }
-      }
-      animation: card-load-primary 2s linear infinite;
-      background: linear-gradient(
-        90deg,
-        rgba($color-gray-300, 0) 0,
-        rgba($color-blue-700, 0.06) 40%,
-        rgba($color-blue-700, 0.06) 60%,
-        rgba($color-gray-300, 0)
-      );
-      content: "";
-      display: block;
-      height: 100%;
-      transform: translateX(0);
-      width: 200%;
-    }
+    @include gardientLoading($load: true);
   }
   &__title {
     background: rgba($color-background-300, 0.8);
@@ -65,29 +53,7 @@
     width: 80%;
     margin-top: 12px;
     z-index: 5;
-    &:before {
-      @keyframes card-load-primary {
-        from {
-          transform: translateX(-100%);
-        }
-        to {
-          transform: translateX(50%);
-        }
-      }
-      animation: card-load-primary 2s linear infinite;
-      background: linear-gradient(
-        90deg,
-        rgba($color-gray-300, 0) 0,
-        rgba($color-blue-700, 0.06) 40%,
-        rgba($color-blue-700, 0.06) 60%,
-        rgba($color-gray-300, 0)
-      );
-      content: "";
-      display: block;
-      height: 100%;
-      transform: translateX(0);
-      width: 200%;
-    }
+    @include gardientLoading($load: true);
   }
 }
 </style>

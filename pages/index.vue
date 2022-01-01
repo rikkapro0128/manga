@@ -133,11 +133,15 @@
       </div>
     </div>
     <div class="results">
-      <div class="wrap-meadia meadia-primary">
-        <CardLoad v-for="n in 20" :key="n" />
+      <div v-if='typeCard.primary' class="wrap-meadia meadia-primary">
+        <CardLoadPrimary v-for="n in 20" :key="n" />
       </div>
-      <div class="wrap-meadia meadia-chart"></div>
-      <div class="wrap-meadia meadia-table"></div>
+      <div v-if='typeCard.chart' class="wrap-meadia meadia-chart">
+        <CardLoadChart v-for="n in 20" :key="n" />
+      </div>
+      <div v-if='typeCard.table' class="wrap-meadia meadia-table">
+        <CardLoadTable v-for="n in 20" :key="n" />
+      </div>
     </div>
   </div>
 </template>
@@ -145,14 +149,18 @@
 <script>
 import Input from "@/components/Input/DefaultInput"
 import Select from "@/components/Select/DefaultSelect"
-import CardLoad from "@/components/Cards/Primary/Load.vue"
+import CardLoadPrimary from "@/components/Cards/Primary/Load.vue"
+import CardLoadChart from "@/components/Cards/Chart/Load.vue"
+import CardLoadTable from "@/components/Cards/Table/Load.vue"
 
 export default {
   name: "Home",
   components: {
     Input,
     Select,
-    CardLoad,
+    CardLoadChart,
+    CardLoadTable,
+    CardLoadPrimary,
   },
   data() {
     return {
@@ -210,9 +218,9 @@ export default {
         "Xuyên Không",
       ],
       typeCard: {
-        primary: true,
+        primary: false,
         chart: false,
-        table: false,
+        table: true,
       },
     }
   },
@@ -286,9 +294,20 @@ export default {
   .results {
     .wrap-meadia {
       display: grid;
-      grid-template-columns: repeat(auto-fill, 185px);
-      grid-gap: 28px 30px;
-      justify-content: space-between;
+      &.meadia-primary {
+        grid-template-columns: repeat(auto-fill, 185px);
+        justify-content: space-between;
+        grid-gap: 28px 30px;
+      }
+      &.meadia-chart {
+        grid-template-columns: repeat(3, minmax(390px, 460px));
+        grid-gap: 28px 30px;
+        justify-content: space-between;
+      }
+      &.meadia-table {
+        grid-template-columns: 1fr;
+        grid-gap: 24px;
+      }
     }
   }
 }

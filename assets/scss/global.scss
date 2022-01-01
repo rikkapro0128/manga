@@ -11,3 +11,47 @@ input {
 * {
   user-select: none;
 }
+
+html {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #e4e4e4;
+    border-radius: 100px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    background-color: rgb(111, 200, 255);
+  }
+}
+
+@mixin gardientLoading($load: false) {
+  &:before {
+    @if $load {
+      @keyframes card-load-primary {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(50%);
+        }
+      }
+      animation: card-load-primary 2s linear infinite;
+    }
+    content: "";
+    display: block;
+    width: 200%;
+    height: 100%;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        90deg,
+        rgba($color-gray-300, 0) 0,
+        rgba($color-blue-700, 0.06) 40%,
+        rgba($color-blue-700, 0.06) 60%,
+        rgba($color-gray-300, 0)
+    );
+  }
+}
