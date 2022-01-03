@@ -133,13 +133,17 @@
       </div>
     </div>
     <div class="results">
-      <div v-if='typeCard.primary' class="wrap-meadia meadia-primary">
-        <CardLoadPrimary v-for="n in 20" :key="n" />
+      <div v-if="typeCard.primary" class="wrap-meadia meadia-primary">
+        <CardLoadPrimary
+          v-for="(dataCard, index) in cardDemo"
+          :key="index"
+          :data="dataCard"
+        />
       </div>
-      <div v-if='typeCard.chart' class="wrap-meadia meadia-chart">
+      <div v-if="typeCard.chart" class="wrap-meadia meadia-chart">
         <CardLoadChart v-for="n in 20" :key="n" />
       </div>
-      <div v-if='typeCard.table' class="wrap-meadia meadia-table">
+      <div v-if="typeCard.table" class="wrap-meadia meadia-table">
         <CardLoadTable v-for="n in 20" :key="n" />
       </div>
     </div>
@@ -218,10 +222,88 @@ export default {
         "Xuyên Không",
       ],
       typeCard: {
-        primary: false,
+        primary: true,
         chart: false,
-        table: true,
+        table: false,
       },
+      cardDemo: [
+        {
+          name: "Na Honjaman Level Up",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx105398-b673Vt5ZSuz3.jpg",
+        },
+        {
+          name: "Sinui Tap",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx85143-lW27BYY5zMqC.jpg",
+        },
+        {
+          name: "HUNTER×HUNTER",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30026-uCvXMudMzmwI.jpg",
+        },
+        {
+          name: "Jujutsu Kaisen",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx101517-H3TdM3g5ZUe9.jpg",
+        },
+        {
+          name: "Jigokuraku",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx101517-H3TdM3g5ZUe9.jpg",
+        },
+        {
+          name: "Dandadan",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx132029-jIm1KsPcIwIl.jpg",
+        },
+        {
+          name: "Dorohedoro",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx31133-xhUafoJkW2AZ.png",
+          desc:
+            'The story revolves around Kaiman, who does not remember who he was before he was transfigured by a Magic user. This transformation left him with a reptile\'s head, and a desire to find out the truth about who he really is. Accompanied by Nikaido, his female companion, he tracks down Magic Users in "The Hole" and unceremoniously chomps down on their head, hoping to find out who it was that put him in this state. One by one, they witness this "second man" inside the head of Kaiman, and after pulling them back out of his mouth he asks them all a question... "What did the guy inside my head say?"' +
+            "",
+        },
+        {
+          name: "Berserk",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30002-7EzO7o21jzeF.jpg",
+          desc: 'Spurred by the flame raging in his heart, the Black Swordsman Guts continues his seemingly endless quest for revenge. Standing in his path are heinous outlaws, delusional evil spirits, and a devout child of god. Even as it chips away at his life, Guts continues to fight his enemies, who wield repulsive and inhumane power, with nary but his body and sword—his strength as a human. What lies at the end of his travels? The answer is shrouded in the "night." Strain your eyes and stare into the dark!',
+        },
+        {
+          name: "Vinland Saga",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30642-x6RpmbP5mU7q.jpg",
+          desc: "As a child, Thorfinn sat at the feet of the great Leif Ericson and thrilled to wild tales of a land far to the west. But his youthful fantasies were shattered by a mercenary raid. Raised by the Vikings who murdered his father, Thorfinn became a terrifying warrior, forever seeking to kill the band's leader, Askeladd, and avenge his father. Sustaining Thorfinn through his ordeal are his pride in his family and his dreams of a fertile westward land, a land without war or slavery … the land Leif called Vinland.",
+        },
+        {
+          name: "Komi-san wa, Komyushou desu.",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx133965-9TZBS4m4yvED.png",
+          desc: "Timid Tadano is a total wallflower, and that’s just the way he likes it. But all that changes when he finds himself alone in a classroom on the first day of high school with the legendary Komi. He quickly realizes she isn’t aloof—she’s just super awkward. Now he’s made it his mission to help her on her quest to make 100 friends!",
+        },
+        {
+          name: "Kaguya-sama wa Kokurasetai?: Tensaitachi no Renai Zunousen",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx112641-zoGC8d6FaPXU.jpg",
+          desc: "After a slow but eventful summer vacation, Shuchiin Academy's second term is now starting in full force. As August transitions into September, Miyuki Shirogane's birthday looms ever closer, leaving Kaguya Shinomiya in a serious predicament as to how to celebrate it. Furthermore, the tenure of the school's 67th student council is coming to an end. Due to the council members being in different classes, the only time Kaguya and Miyuki have to be together will soon disappear, putting all of their cunning plans at risk.",
+        },
+        {
+          name: "Karakai Jouzu no Takagi-san",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx99468-9Ij1UpsehSVx.jpg",
+          desc:
+            "His classmate Takagi loves to tease him on a daily basis, and she uses her extensive knowledge of his behavior to predict exactly how he will react to her teasing, making it nearly impossible for Nishikata to ever make a successful comeback. Despite this, Nishikata vows to someday give Takagi a taste of her own medicine by making her blush out of embarrassment from his teasing." +
+            "",
+        },
+        {
+          name: "Ijiranaide, Nagatoro-san",
+          thumnail:
+            "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx120697-72Sf22C9PTQn.jpg",
+          desc: "One day, Senpai visits the library after school and becomes the target of a super sadistic junior! The name of the girl who teases, torments, and tantalizes Senpai is \"Nagatoro!\" She's annoying yet adorable. It's painful, but you still want to be by her side. This is a story about an extremely sadistic and temperamental girl and you'll feel something awaken inside of you.",
+        },
+      ],
     }
   },
   methods: {

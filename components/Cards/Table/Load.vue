@@ -2,8 +2,8 @@
   <div class="card-wrap">
     <div class="card-wrap__cover"></div>
     <div class="card-wrap__content">
-      <div class='card-wrap__content--title'></div>
-      <div class='card-wrap__content--details'></div>
+      <div class="card-wrap__content--title"></div>
+      <div class="card-wrap__content--details"></div>
     </div>
   </div>
 </template>
@@ -18,17 +18,20 @@
   background: $color-background-100;
   border-radius: 4px;
   padding: 10px;
-  box-shadow: 0 14px 30px rgba($color-shadow-blue, .15),0 4px 4px rgba($color-shadow-blue, .05);
+  box-shadow: 0 14px 30px rgba($color-shadow-blue, 0.15),
+    0 4px 4px rgba($color-shadow-blue, 0.05);
   box-sizing: border-box;
   @keyframes start {
     0% {
       opacity: 0;
-      transform:scale(.96);
-    }60% {
-       opacity: 1;
-     }to {
-        transform: none;
-      }
+      transform: scale(0.96);
+    }
+    60% {
+      opacity: 1;
+    }
+    to {
+      transform: none;
+    }
   }
   &__cover {
     overflow: hidden;

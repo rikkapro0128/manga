@@ -2,21 +2,22 @@
   <div class="card-wrap">
     <div class="card-wrap__cover"></div>
     <div class="card-wrap__description">
-      <div class='card-wrap__description--title'></div>
-      <div class='card-wrap__description--text'></div>
-      <div class='card-wrap__description--text'></div>
+      <div class="card-wrap__description--title"></div>
+      <div class="card-wrap__description--text"></div>
+      <div class="card-wrap__description--text"></div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .card-wrap {
-  animation: start .3s linear;
+  animation: start 0.3s linear;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background-color: $color-background-100;
   border-radius: 4px;
-  box-shadow: 0 14px 30px rgba($color-shadow-blue,.15),0 4px 4px rgba($color-shadow-blue,.05);
+  box-shadow: 0 14px 30px rgba($color-shadow-blue, 0.15),
+    0 4px 4px rgba($color-shadow-blue, 0.05);
   display: inline-grid;
   grid-template-columns: 185px auto;
   height: 265px;
@@ -26,13 +27,15 @@
   text-align: left;
   @keyframes start {
     0% {
-      opacity:0;
-      transform:scale(.96)
-    }60% {
-       opacity:1;
-     }to {
-        transform:none;
-      }
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    60% {
+      opacity: 1;
+    }
+    to {
+      transform: none;
+    }
   }
   &__cover {
     background: rgba($color-background-300, 0.8);
@@ -58,7 +61,7 @@
     line-height: 1.6;
     overflow: hidden;
     padding-right: 17px;
-    transition: color .2s;
+    transition: color 0.2s;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 7;
     &--title {
