@@ -14,6 +14,7 @@
         <nuxt-link class="header__nav--item" to="/group">hội nhóm</nuxt-link>
         <nuxt-link class="header__nav--item" to="/post">bài đăng</nuxt-link>
         <nuxt-link class="header__nav--item" to="/about">about</nuxt-link>
+        <nuxt-link class="header__nav--item" to="/admin">admin</nuxt-link>
       </div>
     </div>
   </header>
