@@ -11,7 +11,7 @@ import { application as FirebaseApp } from '@/firebase/instance.js';
 import store from '@/vuex/store.js';
 
 const routes = [
-  { path: "/", component: Home, meta: { layout: 'default', transition: "slide-left" } },
+  { path: "/", component: Home, meta: { layout: 'default', transition: "slide-left" }, name: 'homepage' },
   { path: "/sign", component: Sign, meta: { layout: 'default', transition: "slide-right", requiresAuth: true, reverseAuth: true } },
   { path: "/manga", component: Manga, meta: { layout: 'default', transition: "slide-right" } },
   { path: "/story", component: Story, meta: { layout: 'none', transition: "slide-right" } },

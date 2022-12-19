@@ -10,4 +10,10 @@
   html {
     font-family: 'Roboto', sans-serif;
   }
+  .hide-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  img {
+    -webkit-user-drag: none;
+  }
 }

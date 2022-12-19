@@ -2,7 +2,7 @@
   <DynamicLayout>
     <router-view v-slot="{ Component }">
       <transition mode="out-in" name="fade">
-        <component class="mt-6 mb-6 px-6" :is="Component" />
+        <component :is="Component" />
       </transition>
     </router-view>
   </DynamicLayout>

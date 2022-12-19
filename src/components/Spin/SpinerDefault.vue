@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col">
+  <div class="absolute w-full h-full flex items-center justify-center flex-col">
     <div class="atom-spinner" :style="{ 'animation-iteration-count': props.count ? props.count : 0 }">
       <div class="spinner-inner">
         <div class="spinner-line" :style="{ borderLeftColor: props.color }"></div>
