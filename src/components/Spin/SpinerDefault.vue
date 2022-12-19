@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <span class="italic mt-2 miru--blink">{{ passMessage }}</span>
+    <span class="italic mt-2 miru--blink whitespace-nowrap">{{ passMessage }}</span>
   </div>
 </template>
 

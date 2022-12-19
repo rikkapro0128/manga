@@ -4,16 +4,16 @@
       :style="{ minWidth: toggle ? `${nav.maxWidth}px` : `${nav.minWidth}px` }">
       <div class="w-full h-full dark:bg-[#191A1C] p-3">
         <div class="flex flex-col justify-between h-full">
-          <div>
+          <div class="h-full">
             <div @click="$router.push({ name: 'homepage' })" class="flex flex-nowrap items-center cursor-pointer">
               <img src="https://mangadex.org/_nuxt/fe9305523f3efa4185ff8ebcf401d17b.svg" alt="logo">
-              <Transition>
-                <span v-if="toggle" class="capitalize text-lg flex-1 text-center font-bold absolute w-full">trang
-                  chủ</span>
-              </Transition>
+              <span :class="`transition-all capitalize text-lg flex-1 text-center font-bold w-full absolute`"
+                :style="{ transform: `translateX(${toggle ? 0 : -100}%)`, opacity: `${toggle ? 1 : 0}` }">trang
+                chủ</span>
             </div>
-            <Transition :duration="{ enter: 500, leave: 50 }">
-              <div class="absolute w-full left-0 right-0 mt-6" v-if="toggle">
+            <div class="absolute w-full left-0 right-0 mt-6">
+              <div :class="`relative h-full transition-transform`"
+                :style="{ width: `${nav.maxWidth}px`, transform: `translateX(${toggle ? 0 : -100}%)` }">
                 <div class="px-3">
                   <div>
                     <p class="text-bold">Kiểu đọc</p>
@@ -23,11 +23,15 @@
                           options.typeRead.val[options.typeRead.index]
                       }}</el-button>
                   </div>
+                  <div>
+                    <p class="text-bold">Tốc độ kéo</p>
+                    <el-slider v-model="options.speedDrag" :step="0.5" max="5" show-stops />
+                  </div>
                 </div>
               </div>
-            </Transition>
+            </div>
           </div>
-          <Transition mode="out-in">
+          <Transition mode="out-in" name="fade">
             <div @click="toggle = true" v-if="!toggle"
               class="rounded-full w-fit p-1 active:bg-gray-800 transition-colors cursor-pointer">
               <EllipsisVerticalIcon class="w-7 h-7 " />
@@ -64,7 +68,8 @@ const options = reactive({
       'trang đôi',
     ],
     index: 0,
-  }
+  },
+  speedDrag: 0,
 })
 
 const handleNext = (index, length) => {
@@ -82,6 +87,16 @@ const handleNext = (index, length) => {
 
 .v-enter-from,
 .v-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 150ms ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
